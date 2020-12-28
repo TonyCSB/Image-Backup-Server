@@ -32,7 +32,7 @@ router.post('/upload', upload.array('imageUpload'), function(req, res, next) {
     fs.mkdirSync(dir);
   }
   req.files.map(file => {
-    fs.rename(file.path, path.join(req.body.dir, file.filename), (err) => {
+    fs.rename(file.path, path.join(dir, file.filename), (err) => {
       if (err) throw err;
     });
   });
