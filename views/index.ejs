@@ -7,6 +7,7 @@
       <title><%= __('title') %></title>
     <% } %>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <% if (query.success) { %>
@@ -16,7 +17,7 @@
     <% } %>
     <form action="/upload" method="POST" enctype="multipart/form-data">
       <div>
-        <label for="dir"><%= __('dirPropmt') %>: </label>
+        <label for="dir"><%= __('dirPropmt') %>: </label><br />
         <select name="rootDir">
           <option value="C:/">C:\</option>
           <option value="D:/" selected>D:\</option>
@@ -24,7 +25,8 @@
         </select>
         <input id="dir" name="dir" type="text" autofocus required>
       </div>
-      <input type="file" id="imageUpload" name="imageUpload" accept="image/*,video/*" multiple required><br /><br />
+      <br />
+      <input type="file" id="imageUpload" name="imageUpload" accept="image/*,video/*" multiple required><br /><br /><br /><br />
       <button type="submit"><%= __('submit') %></button>
       <button type="reset"><%= __('reset') %></button>
     </form>
