@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var fs = require('fs');
+var mv = require('mv');
 var path = require('path');
 var url = require('url');
 
@@ -32,7 +33,7 @@ router.post('/upload', upload.array('imageUpload'), function(req, res, next) {
     fs.mkdirSync(dir);
   }
   req.files.map(file => {
-    fs.rename(file.path, path.join(dir, file.filename), (err) => {
+    mv(file.path, path.join(dir, file.filename), (err) => {
       if (err) throw err;
     });
   });
