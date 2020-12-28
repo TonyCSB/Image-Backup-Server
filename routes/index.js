@@ -36,7 +36,7 @@ router.post('/upload', upload.array('imageUpload'), function(req, res, next) {
       if (err) throw err;
     });
   });
-  console.log(req.files.length + " images/videos uploaded successfully!");
+  console.log(req.files.length + " images/videoes uploaded successfully!");
   res.redirect(url.format({
     pathname: "/",
     query: {
