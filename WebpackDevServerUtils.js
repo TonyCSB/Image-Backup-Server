@@ -11,6 +11,7 @@ const url = require('url');
 const chalk = require('chalk');
 const { networkInterfaces } = require('os');
 
+// Cr: https://stackoverflow.com/questions/3653065/get-local-ip-address-in-node-js
 const nets = networkInterfaces();
 const networks = Object.create(null); // Or just '{}', an empty object
 
