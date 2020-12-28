@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title><%= title %></title>
+    <% if (query.success) { %>
+      <title><%= __('successTitle') %></title>
+    <% } else { %>
+      <title><%= __('title') %></title>
+    <% } %>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <% if (query.success) { %>
+      <h1><%= __n('%s successMessage', query.length) %></h1>
+    <% } else { %>
+      <h1><%= __('title') %></h1>
+    <% } %>
     <form action="/upload" method="POST" enctype="multipart/form-data">
-      <div><label>Please enter the directory to store the images: <input id="dir" name="dir" type="text" autofocus required></label></div>
-      <input type="file" id="imageUpload" name="imageUpload" accept="image/*,video/*" multiple required><br />
-      <button type="submit">Submit Images</button>
-      <button type="reset">Reset</button>
+      <div><label><%= __('dirPropmt') %>: <input id="dir" name="dir" type="text" autofocus required></label></div>
+      <input type="file" id="imageUpload" name="imageUpload" accept="image/*,video/*" multiple required><br /><br />
+      <button type="submit"><%= __('submit') %></button>
+      <button type="reset"><%= __('reset') %></button>
     </form>
   </body>
 </html>

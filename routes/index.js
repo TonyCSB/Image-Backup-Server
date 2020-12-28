@@ -23,7 +23,7 @@ var upload = multer({ storage: storage });
 /* GET home page. */
 router.get('/', function(req, res, next) {
   let title = req.query.success ? req.query.length + " images/videos uploaded successfully!" : "Image Upload Server";
-  res.render('index', { title: title });
+  res.render('index', { query: req.query });
 });
 
 router.post('/upload', upload.array('imageUpload'), function(req, res, next) {
