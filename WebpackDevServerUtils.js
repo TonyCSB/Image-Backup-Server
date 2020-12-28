@@ -49,7 +49,9 @@ function prepareUrls(protocol, host, port, pathname = '/') {
     prettyHost = 'localhost';
     try {
       // This can only return an IPv4 address
-      lanUrlForConfig = !networks["WLAN"] ? networks["wifi0"][0] : networks["WLAN"][0];
+      if (networks["WLAN"]) lanUrlForConfig = networks["WLAN"][0]
+      else if (networks["wifi0"]) lanUrlForConfig = networks["wifi0"][0]
+      else if (networks["Wi-Fi"]) lanUrlForConfig = networks["Wi-Fi"][0]
       if (lanUrlForConfig) {
         // Check if the address is a private ip
         // https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces
