@@ -7,6 +7,11 @@
 var app = require('../app');
 var debug = require('debug')('myapp:server');
 var http = require('http');
+var chalk = require('chalk');
+var {
+  prepareUrls,
+  printInstructions
+} = require('../WebpackDevServerUtils');
 
 /**
  * Get port from environment and store in Express.
@@ -14,7 +19,6 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-console.log('App is listening on port ' + port);
 
 /**
  * Create HTTP server.
@@ -89,3 +93,12 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+const HOST = process.env.HOST || '0.0.0.0';
+const urls = prepareUrls(
+  protocol,
+  HOST,
+  port
+);
+printInstructions("Image Upload Server", urls, false);

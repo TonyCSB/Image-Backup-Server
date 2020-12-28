@@ -15,7 +15,15 @@
       <h1><%= __('title') %></h1>
     <% } %>
     <form action="/upload" method="POST" enctype="multipart/form-data">
-      <div><label><%= __('dirPropmt') %>: <input id="dir" name="dir" type="text" autofocus required></label></div>
+      <div>
+        <label for="dir"><%= __('dirPropmt') %>: </label>
+        <select name="rootDir">
+          <option value="C:">C:\</option>
+          <option value="D:" selected>D:\</option>
+          <option value=<% currDir %>><%= currDir %></option>
+        </select>
+        <input id="dir" name="dir" type="text" autofocus required>
+      </div>
       <input type="file" id="imageUpload" name="imageUpload" accept="image/*,video/*" multiple required><br /><br />
       <button type="submit"><%= __('submit') %></button>
       <button type="reset"><%= __('reset') %></button>

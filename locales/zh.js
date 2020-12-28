@@ -1,7 +1,7 @@
 {
 	"example": "This is displayed for Chinese",
-	"dirPropmt": "请输入要储存的目录",
-	"submit": "提交照片/视频",
+	"dirPropmt": "请输入储存图片的目录",
+	"submit": "提交文件",
 	"reset": "重置表格",
 	"title": "图片上传服务器",
 	"%s successMessage": {

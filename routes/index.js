@@ -22,12 +22,11 @@ var upload = multer({ storage: storage });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  let title = req.query.success ? req.query.length + " images/videos uploaded successfully!" : "Image Upload Server";
-  res.render('index', { query: req.query });
+  res.render('index', { query: req.query, currDir: path.join(__dirname, "..") });
 });
 
 router.post('/upload', upload.array('imageUpload'), function(req, res, next) {
-  let dir = req.body.dir;
+  let dir = path.join(req.body.rootDir, req.body.dir);
   console.log("Saving files to " + dir);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
