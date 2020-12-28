@@ -3,6 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var fs = require('fs');
 var path = require('path');
+var url = require('url');
 
 tempDirectory = "tmp/"
 if (!fs.existsSync(tempDirectory)) {
@@ -21,7 +22,8 @@ var upload = multer({ storage: storage });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Image Upload Server' });
+  let title = req.query.success ? req.query.length + " images/videos uploaded successfully!" : "Image Upload Server";
+  res.render('index', { title: title });
 });
 
 router.post('/upload', upload.array('imageUpload'), function(req, res, next) {
@@ -34,8 +36,15 @@ router.post('/upload', upload.array('imageUpload'), function(req, res, next) {
     fs.rename(file.path, path.join(req.body.dir, file.filename), (err) => {
       if (err) throw err;
     });
-  })
-  res.redirect('/');
+  });
+  console.log(req.files.length + " images/videos uploaded successfully!");
+  res.redirect(url.format({
+    pathname: "/",
+    query: {
+      "success": true,
+      "length": req.files.length
+    }
+  }));
 });
 
 module.exports = router;
