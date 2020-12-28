@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <div><label>Please enter the directory to store the images: <input id="dir" name="dir" type="text" autofocus required></label></div>
+      <input type="file" id="imageUpload" name="imageUpload" accept="image/*,video/*" multiple required><br />
+      <button type="submit">Submit Images</button>
+      <button type="reset">Reset</button>
+    </form>
   </body>
 </html>
