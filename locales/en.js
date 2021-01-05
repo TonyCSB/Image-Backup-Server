@@ -8,5 +8,6 @@
 		"one": "%s image/video uploaded successfully!",
 		"other": "%s images/videoes uploaded successfully!"
 	},
-    "successTitle": "Upload succeeded!"
+	"successTitle": "Upload succeeded!",
+	"dirNamePrompt": "Directory name cannot contain the following character: \/:*?\"<>|"
 }

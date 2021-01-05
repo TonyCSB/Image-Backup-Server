@@ -23,7 +23,7 @@
           <option value="D:/" selected>D:\</option>
           <option value=<% currDir %>><%= currDir %></option>
         </select>
-        <input id="dir" name="dir" type="text" autofocus required>
+        <input id="dir" name="dir" type="text" pattern='^[^\\\/:\*\?"<>|]+$' title=<% __('dirNamePrompt') %> autofocus>
       </div>
       <br />
       <input type="file" id="imageUpload" name="imageUpload" accept="image/*,video/*" multiple required><br /><br /><br /><br />

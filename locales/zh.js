@@ -8,5 +8,6 @@
 		"one": "%s个图片/视频上传成功！",
 		"other": "%s个图片/视频上传成功！"
 	},
-    "successTitle": "上传成功!"
+    "successTitle": "上传成功!",
+	"dirNamePrompt": "文件名不能包含下列任何字符：\/:*?\"<>|"
 }
